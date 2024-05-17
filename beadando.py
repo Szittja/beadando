@@ -67,3 +67,18 @@ class Szalloda:
         print("Szobák listája:")
         for szoba in self.szobak:
             print(szoba)
+
+hotel = Szalloda("Szittja Hotel")
+
+hotel.szoba_hozzaadas(EgyagyasSzoba("101", 50000))
+hotel.szoba_hozzaadas(EgyagyasSzoba("102", 55000))
+hotel.szoba_hozzaadas(KetagyasSzoba("103", 70000))
+
+mainap = datetime.now().date()
+
+for i in range(5):
+    while True:
+        random_szoba = random.choice(hotel.szobak)
+        random_nap = mainap + timedelta(random.randint(0, 20))
+        if hotel.foglal(random_szoba.szobaszam, random_nap):
+            break
